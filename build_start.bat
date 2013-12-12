@@ -195,7 +195,7 @@ set MAVEN_OPTS= -Xms512m -Xmx1024m
 
 echo SayCV_MXE: Customized localRepository at M2_HOME/conf/settings.xml.
 rem <localRepository>/path/to/local/repo</localRepository>
-bash --login -c "sed -i '/<localRepository>/{/<\/localRepository>/s/.*/  <localRepository>D:\/Android\/maven\/repo<\/localRepository>/g}' $M2_HOME/conf/settings.xml"
+rem bash --login -c "sed -i '/<localRepository>/{/<\/localRepository>/s/.*/  <localRepository>D:\/Android\/maven\/repo<\/localRepository>/g}' $M2_HOME/conf/settings.xml"
 if "%errorlevel%"=="0" ( 
 	echo Done Sucessful.
 ) else (
