@@ -190,6 +190,9 @@ echo SayCV_MXE: Add Maven BIN dir to PATH.
 set M2_HOME=D:/Android/maven/apache-maven-3.1.1
 set PATH=%M2_HOME%/bin;%PATH%
 
+echo SayCV_MXE: Adjust java stack size to avoid Maven OutOfMemoryError.
+set MAVEN_OPTS= -Xms128m -Xmx512m
+
 echo SayCV_MXE: Customized localRepository at M2_HOME/conf/settings.xml.
 rem <localRepository>/path/to/local/repo</localRepository>
 bash --login -c "sed -i '/<localRepository>/{/<\/localRepository>/s/.*/  <localRepository>D:\/Android\/maven\/repo<\/localRepository>/g}' $M2_HOME/conf/settings.xml"
