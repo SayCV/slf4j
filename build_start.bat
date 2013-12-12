@@ -189,6 +189,15 @@ echo SayCV_MXE: Add Maven BIN dir to PATH.
 set M2_HOME=D:/Android/maven/apache-maven-3.1.1
 set PATH=%M2_HOME%/bin;%PATH%
 
+echo SayCV_MXE: Customized localRepository at M2_HOME/conf/settings.xml.
+rem <localRepository>/path/to/local/repo</localRepository>
+bash --login -c "sed -i '/<localRepository>/{/<\/localRepository>/s/.*/  <localRepository>D:\/Android\/maven\/repo<\/localRepository>/g}' $M2_HOME/conf/settings.xml"
+if "%errorlevel%"=="0" ( 
+	echo Done Sucessful.
+) else (
+    echo Done Failed.
+)
+
 :::gradle -version >NUL 2>&1
 :::mvn -version >NUL 2>&1
 
@@ -200,9 +209,9 @@ echo SayCV_MXE:
 
 echo SayCV_MXE: Checked Requirements Finished.
 
-echo SayCV_MXE: Generate modified version of the android.jar file in the lib-folder.
+echo SayCV_MXE: Execute mvn compile.
 :::bash.exe --login -c "gradle -b build-android_lib.gradle"
-
+mvn compile
 :::gradle
 
 if "%errorlevel%"=="0" ( 
