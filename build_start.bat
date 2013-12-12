@@ -179,6 +179,7 @@ echo SayCV_MXE: Add ARDUINO IDE dir to PATH.
 
 echo SayCV_MXE: Add Android SDK adb to PATH.
 set ANDROID_SDK_HOME=D:/Android/android-studio/sdk
+set ANDROID_HOME=%ANDROID_SDK_HOME%
 set PATH=%ANDROID_SDK_HOME%/platform-tools;%PATH%
 
 echo SayCV_MXE: Add Gradle BIN dir to PATH.
