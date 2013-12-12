@@ -227,8 +227,17 @@ echo SayCV_MXE: Checked Requirements Finished.
 
 echo SayCV_MXE: Execute mvn compile.
 :::bash.exe --login -c "gradle -b build-android_lib.gradle"
-mvn compile
-:::gradle
+:::mvn compile
+
+if "%errorlevel%"=="0" ( 
+	echo Done Sucessful.
+) else (
+    echo Done Failed.
+)
+
+echo SayCV_MXE: Execute mvn clean package.
+:::mvn clean package jboss:hard-deploy
+mvn clean package
 
 if "%errorlevel%"=="0" ( 
 	echo Done Sucessful.
