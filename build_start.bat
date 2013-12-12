@@ -198,6 +198,21 @@ if "%errorlevel%"=="0" (
     echo Done Failed.
 )
 
+echo SayCV_MXE: Customized proxies at M2_HOME/conf/settings.xml.
+rem bash --login -c "sed  '/<proxy>/{:c;N;/<\/proxy>/!bc;s/\n.*\n/\nNewStrings\n/}' $M2_HOME/conf/settings.xml"
+rem bash --login -c "sed -i '/<username>/{/<\/username>/s/.*/    <username><\/username>/g}' $M2_HOME/conf/settings.xml"
+rem bash --login -c "sed -i '/<password>/{/<\/password>/s/.*/    <password><\/password>/g}' $M2_HOME/conf/settings.xml"
+rem bash --login -c "sed -i '/<host>/{/<\/host>/s/.*/    <host>127.0.0.1<\/host>/g}' $M2_HOME/conf/settings.xml"
+rem bash --login -c "sed -i '/<port>/{/<\/port>/s/.*/    <port>8087<\/port>/g}' $M2_HOME/conf/settings.xml"
+rem bash --login -c "sed -i '/<nonProxyHosts>/{/<\/nonProxyHosts>/s/.*/    <nonProxyHosts>localhost|127.0.0.1<\/nonProxyHosts>/g}' $M2_HOME/conf/settings.xml"
+bash --login -c "cp -rf ../maven_conf_settings.xml $M2_HOME/conf/settings.xml"
+
+if "%errorlevel%"=="0" ( 
+	echo Done Sucessful.
+) else (
+    echo Done Failed.
+)
+
 :::gradle -version >NUL 2>&1
 :::mvn -version >NUL 2>&1
 
