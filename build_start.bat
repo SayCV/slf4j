@@ -191,7 +191,7 @@ set M2_HOME=D:/Android/maven/apache-maven-3.1.1
 set PATH=%M2_HOME%/bin;%PATH%
 
 echo SayCV_MXE: Adjust java stack size to avoid Maven OutOfMemoryError.
-set MAVEN_OPTS= -Xms128m -Xmx512m
+set MAVEN_OPTS= -Xms512m -Xmx1024m
 
 echo SayCV_MXE: Customized localRepository at M2_HOME/conf/settings.xml.
 rem <localRepository>/path/to/local/repo</localRepository>
